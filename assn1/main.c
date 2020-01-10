@@ -20,7 +20,7 @@ int main()
 
   	srand48_r(time(NULL), &randBuffer);
 
-	double a[n][n];
+	double a[n][n],c[n][n];
 
 	for(int i=0;i<n;i++)
 	{
@@ -30,7 +30,8 @@ int main()
 			while(x==0)
 			{
 				drand48_r(&randBuffer, &x);
-				a[i][j] = 100*x;	
+				a[i][j] = 100*x;
+				c[i][j] = 100*x;
 			}
 		}
 	}
@@ -98,7 +99,7 @@ int main()
 			a[k_prime][i]=tmp;
 		}
 
-		for (int i = 0; i < k-1; i++)
+		for (int i = 0; i <= k-1; i++)
 		{
 			tmp=l[k][i];
 			l[k][i]=l[k_prime][i];
@@ -136,7 +137,7 @@ int main()
 	}
 
 	double left[n][n];
-	matrix_mult(n,P,a,left);
+	matrix_mult(n,P,c,left);
 	double right[n][n];
 	matrix_mult(n,l,u,right);
 	double res[n][n];
